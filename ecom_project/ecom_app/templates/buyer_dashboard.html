@@ -1,0 +1,12 @@
+<h2>Buyer Dashboard</h2>
+<p>User: {{ user.username }}</p>
+<p>Address: {{ user.address }}</p>
+<h3>Order History</h3>
+{% for order in orders %}
+  <div>
+    <p>{{ order.product.name }} x {{ order.quantity }} - ₹{{ order.product.price }}</p>
+    <p>Ordered on: {{ order.ordered_at }}</p>
+  </div>
+      <a href="/api/productall/">Product Page</a>
+
+{% endfor %}

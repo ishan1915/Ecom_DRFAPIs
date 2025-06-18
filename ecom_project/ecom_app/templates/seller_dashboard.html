@@ -1,0 +1,14 @@
+<h2>Seller Dashboard</h2>
+<h3>Your Products</h3>
+{% for product in products %}
+  <div>
+    <p>{{ product.name }} - ₹{{ product.price }} ({{ product.quantity }})</p>
+  </div>
+{% endfor %}
+<h3>Your Buyers</h3>
+{% for buyer in buyers %}
+  <p>{{ buyer.username }}</p>
+
+      <a href="/api/productadd/">← Back to Dashboard</a>
+
+{% endfor %}
