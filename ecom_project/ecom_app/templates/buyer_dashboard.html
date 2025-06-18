@@ -1,12 +1,91 @@
-<h2>Buyer Dashboard</h2>
-<p>User: {{ user.username }}</p>
-<p>Address: {{ user.address }}</p>
-<h3>Order History</h3>
-{% for order in orders %}
-  <div>
-    <p>{{ order.product.name }} x {{ order.quantity }} - ₹{{ order.product.price }}</p>
-    <p>Ordered on: {{ order.ordered_at }}</p>
-  </div>
-      <a href="/api/productall/">Product Page</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyer Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+        }
 
-{% endfor %}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+
+        .user-info {
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: #eef1f6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .order-card {
+            background-color: #f1f1f1;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .order-card p {
+            margin: 5px 0;
+        }
+
+        .product-link {
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .product-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Buyer Dashboard</h2>
+
+        <div class="user-info">
+            <p><strong>User:</strong> {{ user.username }}</p>
+            <p><strong>Address:</strong> {{ user.address }}</p>
+        </div>
+
+        <h3>Order History</h3>
+
+        {% if orders %}
+            {% for order in orders %}
+            <div class="order-card">
+                <p><strong>Product:</strong> {{ order.product.name }} x {{ order.quantity }}</p>
+                <p><strong>Price:</strong> ₹{{ order.product.price }}</p>
+                <p><strong>Ordered on:</strong> {{ order.ordered_at }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align:center; color: #888;">You haven't placed any orders yet.</p>
+        {% endif %}
+
+        <a href="/api/productall/" class="product-link">Go to Product Page</a>
+    </div>
+</body>
+</html>
