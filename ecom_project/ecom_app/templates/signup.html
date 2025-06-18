@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-box {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .checkbox input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h2>Create an Account</h2>
+        <form method="POST" action="/api/register/">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" required placeholder="Enter username">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" required placeholder="Enter email address">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" required placeholder="Enter password">
+
+            <div class="checkbox">
+                <input type="checkbox" name="is_seller" id="is_seller">
+                <label for="is_seller">Register as Seller</label>
+            </div>
+
+            <label for="address">Address</label>
+            <textarea name="address" rows="3" placeholder="Enter your address"></textarea>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="/api/login/">Login</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -22,6 +22,10 @@ def register_user(request):
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
+
+def signup(request):
+    return render(request, 'signup.html')
+
 @api_view(['POST'])
 def login_user(request):
     username = request.data.get('username')

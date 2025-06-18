@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
+    email=models.EmailField(blank=False)
     is_seller = models.BooleanField(default=False)
     address = models.TextField(blank=True, null=True)
 

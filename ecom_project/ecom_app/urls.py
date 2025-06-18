@@ -5,6 +5,8 @@ from .views import *
 
 urlpatterns = [
     path('register/', register_user),
+    path('signup/', signup),
+
     path('login/', login_user),
     path('login1/',login),
     path('products/', ProductListView.as_view()),
